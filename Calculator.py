@@ -6,12 +6,17 @@ def calculate_triangle_area(base, height):
         area = (base * height) / 2
         return area
 
+def calculate_slope_percent(distance, z_change):
+    slope = (z_change / distance) * 100
+    return slope
+
 def main():
     while True:
 
         print("\nWhat would you like to do?")
         print("1. Calculate square side length from area")
         print("2. Calculate triangle area from base and height")
+        print("3. Calculate slope percentage from distance and vertical change")
         print("X. Exit")
         choice = input("Enter your choice: ")
         
@@ -39,6 +44,20 @@ def main():
                     cont = input("\nDo you want to calculate another area? (y/n): ")
                     if cont.lower() != 'y':
                         break
+                except ValueError:
+                    print("Please enter a valid number")
+
+        elif choice == "3":
+            while True:
+                try:
+                    distance = float(input("Enter the horizontal distance: "))
+                    z_change = float(input("Enter the vertical change: "))
+                    slope = calculate_slope_percent(distance, z_change)
+                    print(f"The slope percentage is: {slope}%")
+                    
+                    cont = input("\nDo you want to calculate another slope? (y/n): ")
+                    if cont.lower() != 'y':
+                    break
                 except ValueError:
                     print("Please enter a valid number")
 
